@@ -15,11 +15,11 @@ public class X128PPRandom {
     }
 
     public long next() {
-        long l = this.seedLo;
-        long m = this.seedHi;
-        long n = Long.rotateLeft(l + m, 17) + l;
-        this.seedLo = Long.rotateLeft(l, 49) ^ (m ^= l) ^ m << 21;
-        this.seedHi = Long.rotateLeft(m, 28);
+        long lo = this.seedLo;
+        long hi = this.seedHi;
+        long n = Long.rotateLeft(lo + hi, 17) + lo;
+        this.seedLo = Long.rotateLeft(lo, 49) ^ (hi ^= lo) ^ hi << 21;
+        this.seedHi = Long.rotateLeft(hi, 28);
         return n;
     }
 
