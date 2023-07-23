@@ -6,7 +6,7 @@ Just some basic Minecraft Loot Table Sequence Utilities.
 Random sequence stuff implemented in C:
 [random_sequence_c_stuff.zip](https://github.com/DuncanRuns/MiLTSU/files/11916009/random_sequence_c_stuff.zip)
 
-# Include in your own project
+## Include in your own project
 
 We can use JitPack to include the projects directly from GitHub:
 
