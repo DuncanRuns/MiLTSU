@@ -1,9 +1,10 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 group = 'me.duncanruns.miltsu'
-version = '0.0.1'
+version = '0.0.2'
 
 repositories {
     mavenCentral()
@@ -22,15 +23,12 @@ dependencies {
 
 
 jar {
-
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-
     manifest {
         // Thanks to answers from this: https://stackoverflow.com/questions/33020069/how-to-get-version-attribute-from-a-gradle-build-to-be-included-in-runtime-swing
         attributes 'Multi-Release': true,
                 'Implementation-Version': version
     }
-
     from {
         configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
@@ -38,4 +36,14 @@ jar {
 
 test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+    }
 }
