@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'maven-publish'
 }
 
 group = 'me.duncanruns.miltsu'
@@ -10,17 +9,19 @@ repositories {
     mavenCentral()
 }
 
-tasks.withType(JavaCompile).configureEach {
-    it.options.release = 8
-}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     // https://mvnrepository.com/artifact/com.google.guava/guava
-    implementation group: 'com.google.guava', name: 'guava', version: '32.0.1-jre'
+    implementation 'com.google.guava:guava:32.1.1-jre'
 }
 
+java {
+    withSourcesJar()
+}
 
 jar {
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
@@ -38,12 +39,12 @@ test {
     useJUnitPlatform()
 }
 
+apply plugin: 'maven-publish'
+
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        maven(MavenPublication) {
             from components.java
         }
-    }
-    repositories {
     }
 }
