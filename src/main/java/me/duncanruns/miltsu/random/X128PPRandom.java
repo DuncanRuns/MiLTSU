@@ -4,7 +4,6 @@ public class X128PPRandom {
     private long seedLo;
     private long seedHi;
 
-
     public X128PPRandom(long lo, long hi) {
         this.seedLo = lo;
         this.seedHi = hi;

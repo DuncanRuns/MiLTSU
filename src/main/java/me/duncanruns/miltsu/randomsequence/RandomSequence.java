@@ -31,6 +31,10 @@ public abstract class RandomSequence {
         this.random = new X128PPRandom(mixedLow, mixedHi);
     }
 
+    public X128PPRandom getRandom() {
+        return random;
+    }
+
     public static long mixStafford13(long seed) {
         seed = (seed ^ seed >>> 30) * -4658895280553007687L;
         seed = (seed ^ seed >>> 27) * -7723592293110705685L;
