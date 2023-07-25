@@ -22,16 +22,4 @@ Random sequence stuff implemented in C:
 
 ## Include in your own project
 
-We can use JitPack to include the projects directly from GitHub:
-
-```groovy
-repositories {
-    maven { url 'https://jitpack.io' }
-}
-```
-And include MiLTSU in your dependencies:
-```groovy
-dependencies {
-    implementation 'com.github.DuncanRuns:MiLTSU:-SNAPSHOT'
-}
-```
+We can use JitPack to include the project directly from GitHub. [Check out the JitPack page to see how to include the project.](https://jitpack.io/#DuncanRuns/MiLTSU)
