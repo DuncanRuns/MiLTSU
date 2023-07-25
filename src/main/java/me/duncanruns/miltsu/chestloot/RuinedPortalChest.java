@@ -67,6 +67,8 @@ public class RuinedPortalChest implements Chest {
                     enchant = Enchantments.SWORD_ENCHANTS[random.nextInt(Enchantments.SWORD_ENCHANTS.length)];
                     break;
                 case "minecraft:golden_axe":
+                    enchant = Enchantments.AXE_ENCHANTS[random.nextInt(Enchantments.AXE_ENCHANTS.length)];
+                    break;
                 case "minecraft:golden_hoe":
                 case "minecraft:golden_shovel":
                 case "minecraft:golden_pickaxe":
