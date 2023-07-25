@@ -13,6 +13,24 @@ public class X128PPRandom {
         }
     }
 
+    public static X128PPRandom fromLongSeed(long seed) {
+        long unmixedLow = seed ^ 0x6A09E667F3BCC909L;
+        long unmixedHigh = unmixedLow + -7046029254386353131L;
+        return new X128PPRandom(RandomUtil.mixStafford13(unmixedLow), RandomUtil.mixStafford13(unmixedHigh));
+    }
+
+    public static long getPopulationSeed(long worldSeed, int blockX, int blockZ) {
+        X128PPRandom random;
+        random = fromLongSeed(worldSeed);
+        long l = random.nextLong() | 1L;
+        long m = random.nextLong() | 1L;
+        return (long) blockX * l + (long) blockZ * m ^ worldSeed;
+    }
+
+    public static X128PPRandom fromDecorator(long popSeed, int index, int step) {
+        return fromLongSeed(popSeed + (long) index + (10000L * step));
+    }
+
     public long next() {
         long lo = this.seedLo;
         long hi = this.seedHi;
@@ -62,5 +80,11 @@ public class X128PPRandom {
             return min;
         }
         return this.nextInt(max - min + 1) + min;
+    }
+
+    public long nextLong() {
+        int high32 = (int) this.next(32);
+        int low32 = (int) this.next(32);
+        return (((long) high32) << 32) + (long) low32;
     }
 }

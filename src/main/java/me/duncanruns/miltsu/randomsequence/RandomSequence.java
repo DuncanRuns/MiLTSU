@@ -4,6 +4,7 @@ import com.google.common.base.Charsets;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 import com.google.common.primitives.Longs;
+import me.duncanruns.miltsu.random.RandomUtil;
 import me.duncanruns.miltsu.random.X128PPRandom;
 
 public abstract class RandomSequence {
@@ -25,16 +26,10 @@ public abstract class RandomSequence {
         long splitHi = unmixedHi ^ identifierHi;
 
         // Create mixed Xoroshiro seed
-        long mixedLow = mixStafford13(splitLow);
-        long mixedHi = mixStafford13(splitHi);
+        long mixedLow = RandomUtil.mixStafford13(splitLow);
+        long mixedHi = RandomUtil.mixStafford13(splitHi);
 
         this.random = new X128PPRandom(mixedLow, mixedHi);
-    }
-
-    public static long mixStafford13(long seed) {
-        seed = (seed ^ seed >>> 30) * -4658895280553007687L;
-        seed = (seed ^ seed >>> 27) * -7723592293110705685L;
-        return seed ^ seed >>> 31;
     }
 
     public X128PPRandom getRandom() {
