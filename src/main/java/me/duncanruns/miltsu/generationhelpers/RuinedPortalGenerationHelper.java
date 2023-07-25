@@ -55,13 +55,13 @@ public class RuinedPortalGenerationHelper {
      * All ruined portal's generationStep should be 4 (surface structures step)
      * <p>
      * The following are structure indices for different ruined portal biome locations:
-     *  <li>ruined_portal_standard = 10</li>
-     *  <li>ruined_portal_desert = 11</li>
-     *  <li>ruined_portal_jungle = 12</li>
-     *  <li>ruined_portal_mountain = 13</li>
-     *  <li>ruined_portal_nether = 14</li>
-     *  <li>ruined_portal_ocean = 15</li>
-     *  <li>ruined_portal_swamp = 16</li>
+     * <li>ruined_portal_standard = 10</li>
+     * <li>ruined_portal_desert = 11</li>
+     * <li>ruined_portal_jungle = 12</li>
+     * <li>ruined_portal_mountain = 13</li>
+     * <li>ruined_portal_nether = 14</li>
+     * <li>ruined_portal_ocean = 15</li>
+     * <li>ruined_portal_swamp = 16</li>
      */
     public static long getChestSeed(long worldSeed, Position.ChunkPosition chunkWithChest, int structureIndex, int generationStep, int throwAway) {
         Position minPos = chunkWithChest.toBlockPosition();
