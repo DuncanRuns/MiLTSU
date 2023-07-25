@@ -1,5 +1,5 @@
 # MiLTSU
-Just some basic Minecraft Loot Table Sequence Utilities.
+Just some basic Minecraft Loot Table (and) Sequence Utilities.
 
 ```java
 // Loop through world seeds
