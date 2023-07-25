@@ -87,6 +87,16 @@ public class RuinedPortalGenerationHelper {
         return getChestPos(startChunk, variant, giant, mirror, rotation);
     }
 
+    public static int generateVariant(long worldSeed, Position.ChunkPosition startChunk) {
+        Random chunkRandom = RandomUtil.fromCarverSeed(worldSeed, startChunk.x, startChunk.z);
+
+        boolean underground = chunkRandom.nextFloat() < 0.5f;
+        boolean airpocket = underground || chunkRandom.nextFloat() < 0.5f;
+        boolean giant = chunkRandom.nextFloat() < 0.05f;
+
+        return (giant ? 100 : 0) + chunkRandom.nextInt(giant ? 3 : 10) + 1;
+    }
+
     public static Position getChestPos(Position.ChunkPosition startChunk, int variant, boolean giant, boolean mirror, int rotation) {
         Position size = giant ? GIANT_SIZES[variant - 1] : SIZES[variant - 1];
         Position pivot = new Position(size.getX() / 2, size.getZ() / 2);
